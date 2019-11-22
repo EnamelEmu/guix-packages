@@ -41,6 +41,7 @@
 		    ("pkg-config" ,pkg-config)
 		    ("yasm" ,yasm)
 		    ("unzip" ,unzip)
+		    ("lvm2" ,lvm2)
 		    ("wxwidgets" ,wxwidgets)))
    (build-system gnu-build-system)
    (arguments
